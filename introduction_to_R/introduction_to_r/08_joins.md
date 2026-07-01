@@ -1,14 +1,11 @@
 ---
 name: Joins
 dependsOn: [introduction_to_R.introduction_to_r.07_group_by_and_summarise]
-tags: [r, dplyr, joins, data-integration]
 learningOutcomes:
   - Distinguish common join types and when to use each.
   - Join analytical and reference datasets using shared keys.
   - Diagnose unmatched keys with anti_join.
 ---
-
-#  Joins
 
 Real datasets live across multiple tables. Joins are how you reunite them, matching rows from two sources on a shared key, without manually copying values between files.
 
@@ -16,27 +13,16 @@ Real datasets live across multiple tables. Joins are how you reunite them, match
 
 The IDEAL dataset records one row per calf visit. A separate table holds sub-location metadata — division, altitude, administrative boundaries. Joining enriches every visit row without duplicating the metadata by hand.
 
-:::: {.columns}
-::: {.column width="50%"}
 **`ideal`** — Visit records
 
-```{r}
-#| label: join-left-preview
-#| echo: false
+```r
 ideal |> distinct(sublocation) |> arrange(sublocation)
 ```
-:::
-::: {.column width="50%"}
 **`sublocation_info`** — Area metadata
 
-```{r}
-#| label: join-right-preview
-#| echo: false
+```r
 sublocation_info
 ```
-:::
-::::
-
 ## The Four Join Types
 
 | Join | Result |
@@ -50,8 +36,7 @@ sublocation_info
 
 ## `left_join()` — Attach Without Losing Rows
 
-```{webr-r}
-#| label: left-join
+```r
 # summarise to sublocation level, then attach geographic metadata
 calf_summary <- ideal |>
   group_by(sublocation) |>
@@ -71,8 +56,7 @@ calf_join
 
 ## `inner_join()` — Only Complete Matches
 
-```{webr-r}
-#| label: inner-join
+```r
 # only sub-locations present in both tables survive
 calf_summary |>
   inner_join(sublocation_info, by = "sublocation")
@@ -82,8 +66,7 @@ calf_summary |>
 
 ## `anti_join()` — Diagnosing the Gaps
 
-```{webr-r}
-#| label: anti-join
+```r
 # which sub-locations in the data have no metadata entry?
 calf_summary |>
   anti_join(sublocation_info, by = "sublocation")
@@ -93,8 +76,7 @@ calf_summary |>
 
 ## Joining on the Full Dataset
 
-```{webr-r}
-#| label: join-raw
+```r
 ideal |>
   left_join(sublocation_info, by = "sublocation") |>
   filter(!is.na(Weight)) |>

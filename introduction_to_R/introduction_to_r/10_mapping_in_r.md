@@ -1,14 +1,11 @@
 ---
 name: Mapping in R
 dependsOn: [introduction_to_R.introduction_to_r.09_data_visualisation]
-tags: [r, sf, ggplot2, maps]
 learningOutcomes:
   - Work with spatial data using sf objects.
   - Build choropleth maps by joining geographic and tabular data.
   - Interpret common ggplot2 geometries for analysis communication.
 ---
-
-#  Mapping in R
 
 ## Maps in R — `sf` and `ggplot2`
 
@@ -20,15 +17,13 @@ Two key ideas to remember:
 - `geom_sf()` renders the geometry column automatically inside ggplot2 — no coordinate wrangling needed
 
 
-```{webr-r}
-#| label: sf-inspect
+```r
 kenya
 ```
 
-## `geom_sf()` — Kenya Boundaries {.code-only}
+## `geom_sf()` — Kenya Boundaries
 
-```{webr-r}
-#| label: kenya-outline
+```r
 ggplot(data = kenya) +
   geom_sf(fill = "white", colour = "black", linewidth = 0.4) +
   theme_void() +
@@ -38,21 +33,12 @@ ggplot(data = kenya) +
 
 ## `geom_sf()` — Result
 
-:::: {.columns}
-::: {.column width="60%"}
-```{r}
-#| label: kenya-outline-static
-#| echo: false
-#| fig-width: 5
-#| fig-height: 4.5
-#| out-width: "100%"
+```r
 ggplot(data = kenya) +
   geom_sf(fill = "white", colour = "black", linewidth = 0.4) +
   theme_void() +
   labs(title = "Kenya — County Boundaries (47 Counties)")
 ```
-:::
-::: {.column width="40%"}
 `geom_sf()` is the spatial equivalent of `geom_col()` — you supply a data frame and ggplot2 handles all coordinate projection and border drawing.
 
 **What you get**
@@ -61,15 +47,11 @@ ggplot(data = kenya) +
 - The `geometry` column is detected automatically — no `x =` or `y =` needed
 
 > **Try it:** change `fill = "#f0f4f8"` to `fill = "#185FA5"` and re-run to colour every county blue.
-:::
-::::
-
 ## Preparing the Choropleth — Cattle Population
 
 Filter the population data to one species and build the joined spatial table.
 
-```{webr-r}
-#| label: choropleth-prep
+```r
 # filter to a single species
 cattle <- population |>
   filter(Species == "Cattle(Total)")
@@ -92,10 +74,9 @@ cattle_map |> select(county, value)
 
 > The `case_when()` step is a real-world data quality step — spelling mismatches between datasets are extremely common. Always check with `setdiff(table_a$key, table_b$key)` before any join.
 
-## Choropleth — Cattle Population {.code-only}
+## Choropleth — Cattle Population
 
-```{webr-r}
-#| label: choropleth-plot
+```r
 ggplot(data = cattle_map) +
   geom_sf(aes(fill = value), colour = "black", linewidth = 0.3) +
   scale_fill_gradient(low = 'lightyellow', 
@@ -109,14 +90,7 @@ ggplot(data = cattle_map) +
 
 ## Choropleth — Result
 
-:::: {.columns}
-::: {.column width="60%"}
-```{r}
-#| label: choropleth-static
-#| echo: false
-#| fig-width: 5
-#| fig-height: 4.5
-#| out-width: "100%"
+```r
 cattle <- population |>
   filter(Species == "Cattle(Total)")
 cattle_map <- kenya |>
@@ -138,8 +112,6 @@ ggplot(data = cattle_map) +
   theme_void() +
   labs(title = "Cattle Population by County — Kenya")
 ```
-:::
-::: {.column width="40%"}
 `left_join()` connects the spatial data frame to the CSV table on the shared `county` key — ggplot2 maps `value` to `fill` exactly as it would for a bar chart.
 
 **Reading the map**
@@ -148,9 +120,6 @@ ggplot(data = cattle_map) +
 - Turkana county typically show the highest density
 
 > **Try it:** go back, change `"Cattle(Total)"` to `"Goats"` in the `filter()`, re-run both slides, then advance — observe how the spatial pattern shifts between species.
-:::
-::::
-
 ## ggplot2 Reference — Common Geometries
 
 | Geometry | Best for | Key aesthetics |

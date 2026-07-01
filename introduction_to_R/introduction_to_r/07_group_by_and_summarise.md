@@ -1,13 +1,12 @@
 ---
 name: Group By and Summarise
 dependsOn: [introduction_to_R.introduction_to_r.06_mutate_and_case_when]
-tags: [r, dplyr, group_by, summarise]
 learningOutcomes:
   - Aggregate datasets with grouped and ungrouped summaries.
   - Use summary functions to compute counts and descriptive statistics.
 ---
 
-#  `group_by()` & `summarise()`
+##  `group_by()` & `summarise()`
 
 Most research questions are comparisons: **Does this outcome differ across groups?** `group_by()` and `summarise()` are how tidyverse answers them
 
@@ -15,8 +14,7 @@ Most research questions are comparisons: **Does this outcome differ across group
 
 Without a grouping, `summarise()` collapses the entire dataset to a single summary row. This is your reference point.
 
-```{webr-r}
-#| label: summarise-alone
+```r
 ideal |>
   summarise(
     n_visits = n(),
@@ -34,8 +32,7 @@ ideal |>
 - Add `group_by()` and every summary is computed independently for each group. The result is one row per unique combination of grouping variables.
 - Call `ungroup()` afterwards to release the grouping structure.
 
-```{webr-r}
-#| label: group-summarise
+```r
 result <- ideal |>
   group_by(sublocation, ReasonsLoss1) |>
   summarise(
@@ -50,8 +47,7 @@ result
 
 ## Disease Burden by Outcome
 
-```{webr-r}
-#| label: group-theileria
+```r
 ideal |>
   group_by(ReasonsLoss1) |>
   summarise(

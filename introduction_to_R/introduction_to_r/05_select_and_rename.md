@@ -1,7 +1,6 @@
 ---
 name: Select and Rename
 dependsOn: [introduction_to_R.introduction_to_r.04_pipe_and_filter]
-tags: [r, dplyr, select, rename, arrange]
 learningOutcomes:
   - Select, drop, and pattern-match columns efficiently.
   - Rename fields for cleaner and more readable analysis.
@@ -18,8 +17,7 @@ learningOutcomes:
 
 Pass column names directly. `select()` returns a tibble with exactly those columns in the order you listed them. Rows are untouched.
 
-```{webr-r}
-#| label: select-basic
+```r
 ideal |>
   dplyr::select(CalfID, sublocation, CalfSex, Weight, ManualPCV, `Theileria.spp.`, ReasonsLoss1)
 ```
@@ -30,8 +28,7 @@ ideal |>
 
 Prefix any name with `-` to drop it instead of keeping it. When you want most columns but not a few, dropping is more concise than listing every keeper.
 
-```{webr-r}
-#| label: select-drop
+```r
 # removing columns
 ideal |>
   select(-CADOB, -VisitID, -VisitWeek, -WeightMax, -WeightMin)
@@ -41,8 +38,7 @@ ideal |>
 
 When a dataset has dozens of columns, selecting by pattern is more robust than listing names.
 
-```{webr-r}
-#| label: select-helpers
+```r
 # select both ELISA columns without naming them explicitly
 ideal |>
   select(CalfID, starts_with("ELISA")) |>
@@ -61,8 +57,7 @@ ideal |>
 
 - You have now seen the friction that raw source names create — backticks for `Theileria.spp.`, uppercase everywhere, cryptic codes like `ReasonsLoss1`. `rename()` removes that friction permanently. Do it once, and every line that follows is cleaner.
 
-```{webr-r}
-#| label: rename-basic
+```r
 # syntax: rename(new_name = old_name)
 ideal |>
   rename(
@@ -78,8 +73,7 @@ ideal |>
 
 - `arrange()` reorders rows by one or more columns. Unlike `filter()`, it never removes rows it only changes their order.
 
-```{webr-r}
-#| label: arrange
+```r
 # which calves were heaviest at the time of their visit?
 ideal |>
   filter(!is.na(Weight)) |>

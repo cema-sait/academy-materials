@@ -1,7 +1,6 @@
 ---
 name: Inspecting Your Data
 dependsOn: [introduction_to_R.introduction_to_r.02_dataset_overview]
-tags: [r, data-quality, inspection]
 learningOutcomes:
   - Inspect structure and dimensions with head, dim, names, and glimpse.
   - Generate summary statistics and identify missing values.
@@ -17,29 +16,19 @@ Never analyse data you have not looked at. These three functions are your first 
 - `dim()` confirms the number of rows and columns.
 - `names()` lists every column
 
-:::: {.columns}
-::: {.column width="50%"}
-```{webr-r}
-#| label: inspect-head
+```r
 head(ideal, 5)
 ```
-:::
-::: {.column width="50%"}
-```{webr-r}
-#| label: inspect-dim
+```r
 dim(ideal)
 names(ideal)
 ```
-:::
-::::
-
 ## `glimpse()` — The Structural View
 
 - `glimpse()` transposes your data: each column becomes a row, showing its type and first few values side by side.
 - In a single screen, you learn the shape, the types, and the range of values.
 
-```{webr-r}
-#| label: inspect-glimpse
+```r
 glimpse(ideal)
 ```
 
@@ -50,8 +39,7 @@ glimpse(ideal)
 - `summary()` applies summary statistics to every numeric column. Missing values appear as a named count.
 - One call brings out outliers, impossible values, and data completeness issues that would otherwise stay hidden until analysis.
 
-```{webr-r}
-#| label: inspect-summary
+```r
 summary(ideal[, c("Weight", "ManualPCV", "Theileria.spp.", "ADWG")])
 ```
 

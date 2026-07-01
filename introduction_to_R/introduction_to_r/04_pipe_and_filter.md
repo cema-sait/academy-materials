@@ -1,13 +1,12 @@
 ---
 name: Pipe and Filter
 dependsOn: [introduction_to_R.introduction_to_r.03_inspecting_your_data]
-tags: [r, dplyr, pipe, filter]
 learningOutcomes:
   - Use the base R pipe for readable transformation pipelines.
   - Apply filter with logical operators, NA handling, and set membership.
 ---
 
-#  The Pipe Operator & `filter()`
+##  The Pipe Operator & `filter()`
 
 The pipe turns nested, inside-out function calls into a left-to-right sentence.
 
@@ -16,36 +15,23 @@ The pipe turns nested, inside-out function calls into a left-to-right sentence.
 - Without the pipe, reading R code means parsing from the innermost call outward which is the opposite of how you reason about a problem.
 - The pipe lets you write steps in the order they happen.
 
-:::: {.columns}
-::: {.column width="70%"}
 ### Without the pipe
 
-```{r}
-#| label: no-pipe
-#| eval: false
+```r
 # read from the inside out — unnatural
 select(
   filter(ideal, ReasonsLoss1 == "survived"),
   CalfID, sublocation, Weight
 )
 ```
-:::
-::: {.column width="50%"}
 ### With the pipe
 
-```{r}
-#| label: with-pipe
-#| eval: false
+```r
 # read left to right — matches how you think
 ideal |>
   dplyr::filter(ReasonsLoss1 == "survived") |>
   dplyr::select(CalfID, sublocation, Weight)
 ```
-:::
-::::
-
-. . .
-
 > Read `|>` as **"and then"** — *take the data, **and then** filter, **and then** select.* Keyboard shortcut: **Ctrl + Shift + M** in RStudio.
 
 ## `%>%` vs `|>` — Which Pipe?
@@ -56,9 +42,7 @@ ideal |>
 | **Speed** | Slightly slower | Marginally faster |
 | **Where you'll see it** | Most existing tidyverse tutorials | Modern R code, including this session |
 
-```{r}
-#| label: pipe-both
-#| eval: false
+```r
 # these two lines produce identical output
 ideal %>% filter(ReasonsLoss1 == "survived")
 ideal |>  filter(ReasonsLoss1 == "survived")
@@ -68,8 +52,7 @@ ideal |>  filter(ReasonsLoss1 == "survived")
 
 `filter()` evaluates a condition row by row and returns only the rows where the condition is `TRUE`. Every other row is silently discarded leaving the column structure is unchanged.
 
-```{webr-r}
-#| label: filter-basic
+```r
 # keep only calves that did not survive
 ideal |>
   filter(ReasonsLoss1 == "died")
@@ -80,18 +63,14 @@ ideal |>
 - Separate conditions with a `&` for AND logic, or `|` for OR logic.
 - R tests each row independently — only rows that satisfy every condition are kept.
 
-```{webr-r}
-#| label: filter-and
+```r
 # Theileria-positive calves that survived — AND logic
 ideal |>
   dplyr::filter(`Theileria.spp.` == 1 & ReasonsLoss1 == "survived") |>
   head()
 ```
 
-. . .
-
-```{webr-r}
-#| label: filter-or
+```r
 # visits from either Kidera or Igero — OR logic
 ideal |>
   dplyr::filter(sublocation == "Kidera" | sublocation == "Igero") |>
@@ -104,17 +83,13 @@ ideal |>
 
 Missing values are R's most common source of silent, hard-to-detect errors. The rule is simple: `NA == NA` returns `NA`, not `TRUE`. That means `filter(Weight == NA)` always returns zero rows — even when missing values exist.
 
-```{webr-r}
-#| label: filter-na
+```r
 # use is.na() to test for missingness
 ideal |>
   filter(!is.na(Weight))
 ```
 
-. . .
-
-```{webr-r}
-#| label: filter-na-check
+```r
 # count how many visits are missing a weight measurement
 ideal |>
   filter(is.na(Weight)) |>
@@ -142,8 +117,7 @@ ideal |>
 - `%in%` tests membership in a set — far more readable than chaining multiple `==` conditions with `|`.
 - It scales naturally: adding a fourth location is one comma, not a new line of logic.
 
-```{webr-r}
-#| label: filter-in
+```r
 # select three specific sub-locations
 ideal |>
   dplyr::filter(sublocation %in% c("Kidera", "Igero", "Luanda")) |>

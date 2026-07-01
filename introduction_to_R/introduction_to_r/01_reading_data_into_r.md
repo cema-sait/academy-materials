@@ -1,13 +1,10 @@
 ---
 name: Reading Data into R
 dependsOn: [introduction_to_R.introduction_to_r.00_getting_started_with_r]
-tags: [r, data-import, tidyverse, readr, readxl]
 learningOutcomes:
   - Load data from CSV and Excel files into tibbles.
   - Choose appropriate import functions for common file formats.
 ---
-
-# Reading Data into R
 
 Before you can analyse data, you must load it into R. Two tidyverse packages handle virtually every file format you will encounter in practice.
 
@@ -23,9 +20,7 @@ Before you can analyse data, you must load it into R. Two tidyverse packages han
 | `readr` | `read_tsv()` | Columns are separated by tabs |
 | `readxl` | `read_excel()` | Your file is `.xlsx` or `.xls` |
 
-```{r}
-#| label: load-libs
-#| eval: false
+```r
 library(tidyverse)
 library(readxl)
 ```
@@ -36,9 +31,7 @@ library(readxl)
 
 - `read_csv()` is the workhorse for flat files. It reads faster than base R's `read.csv()`, it never silently converts strings to factors, and prints a column-type summary on load so you always know what was parsed.
 
-```{r}
-#| label: read-csv-demo
-#| eval: false
+```r
 # reading the data
 # this should work when the file is in your working directory
 ideal <- read_csv("ideal.csv")
@@ -50,9 +43,7 @@ Excel workbooks carry hidden complexity including multiple sheets, merged header
 
 - `read_excel()` exposes each of these as an explicit argument, making your assumptions visible and reproducible.
 
-```{r}
-#| label: read-excel-demo
-#| eval: false
+```r
 # this reads the first sheet by default
 ideal <- read_excel("ideal.xlsx")
 

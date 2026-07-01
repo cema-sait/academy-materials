@@ -1,7 +1,6 @@
 ---
 name: Getting Started with R
 dependsOn: [introduction_to_R.introduction_to_r]
-tags: [r, rstudio, basics, setup]
 learningOutcomes:
   - Understand what R is and how it differs from RStudio.
   - Navigate key RStudio panes and workflow patterns.
@@ -11,50 +10,36 @@ learningOutcomes:
 
 ## Today's Session
 
-:::: {.columns}
-::: {.column width="50%"}
 **Getting data in & oriented**
 
-- Reading data — `read_csv()`, `read_excel()` <br><span class="muted small">flat files and spreadsheets</span>
-- Inspecting — `glimpse()`, `summary()` <br><span class="muted small">know your data before you touch it</span>
-- The pipe `|>` <br><span class="muted small">chain steps into readable sentences</span>
-- Rows — `filter()`, `arrange()` <br><span class="muted small">ask questions of your data</span>
-:::
-::: {.column width="50%"}
+- Reading data — `read_csv()`, `read_excel()`  (flat files and spreadsheets)
+- Inspecting — `glimpse()`, `summary()`  (know your data before you touch it)
+- The pipe `|>`  (chain steps into readable sentences)
+- Rows — `filter()`, `arrange()`  (ask questions of your data)
 **Shaping & summarising**
 
-- Columns — `select()`, `rename()` <br><span class="muted small">keep only what matters</span>
-- Deriving variables — `mutate()`, `case_when()` <br><span class="muted small">create meaning from raw values</span>
-- Aggregation — `group_by()` + `summarise()` <br><span class="muted small">collapse many rows into insight</span>
-- Joining tables <br><span class="muted small">unite data from multiple sources</span>
+- Columns — `select()`, `rename()`  (keep only what matters)
+- Deriving variables — `mutate()`, `case_when()`  (create meaning from raw values)
+- Aggregation — `group_by()` + `summarise()`  (collapse many rows into insight)
+- Joining tables  (unite data from multiple sources)
 
 **Visualising**
 
-- `ggplot2` — grammar of graphics <br><span class="muted small">bar charts, column charts, maps</span>
-:::
-::::
-
+- `ggplot2` — grammar of graphics  (bar charts, column charts, maps)
 # Getting Started with R
 
 ## Roadmap
 
-:::: {.columns}
-::: {.column width="50%"}
 **Orientation**
 
 - What R is, and R vs RStudio 
 - Navigating RStudio & using Projects 
 - Objects, comments, and data types 
-:::
-::: {.column width="50%"}
 **Building blocks**
 
 - Objects vs vectors 
 - Vectors · matrices · lists · data frames 
 - A hands-on practice slide, then the tidyverse 
-:::
-::::
-
 ## What is R?
 
 - R is a programming language for **statistical computing** built specifically for data analysis, statistical modelling, and visualisation.
@@ -70,27 +55,20 @@ learningOutcomes:
 - Its real growth came from a **vibrant community** of developers contributing packages and extensions — the ecosystem, not the core, is where most of R's power lives.
 - Today it is firmly established across both **academia and industry**.
 
-> The story of R is really the story of its community. Every analysis you'll run this week leans on code that someone, somewhere, contributed for free. <span class="muted small">(Huang & Yang, 2022)</span>
+> The story of R is really the story of its community. Every analysis you'll run this week leans on code that someone, somewhere, contributed for free. (Huang & Yang, 2022)
 
 ## R vs RStudio
 
-:::: {.columns}
-::: {.column width="50%"}
 **R** — the programming language
 
 - Does the actual computation
 - Runs your code, returns results
 - Can work on its own
-:::
-::: {.column width="50%"}
 **RStudio (now Posit)** — the IDE
 
 - An *Integrated Development Environment* for R
 - Makes writing R easier and more efficient
 - Editor, console, plots, help, and environment in one window
-:::
-::::
-
 > RStudio sends your code to R, and R sends the results back.
 
 ## Installing R & RStudio
@@ -102,56 +80,33 @@ Two installs, in this order:
 
 > Install **R first**, then RStudio — RStudio looks for an R engine already on your machine.
 
-. . .
-
 > For *this* session you don't need either: every code cell on these slides runs real R **live in your browser** via WebR. Click into a cell, edit it, and press **Run**. For your own projects, though, install both.
 
 ## Navigating RStudio
 
 RStudio organises everything into **four panes**.
 
-:::: {.columns}
-::: {.column width="58%"}
-![](figs/rstudio_home.png){fig-align="center" width="100%"}
-:::
-::: {.column width="42%"}
+![](figs/rstudio_home.png)
 - **Source editor** *(top-left)* — write and save your `.R` scripts
 - **Console** *(bottom-left)* — where code runs and results print
 - **Environment** *(top-right)* — the objects in your current session
 - **Files · Plots · Packages · Help** *(bottom-right)* — files, charts, packages, docs
-:::
-::::
-
 > The **Environment** pane is your live inventory. Every object you create appears there with its type and size.
 
 ## RStudio in Action — Run & See
 
 The core loop: type a command in the **Console**, press Enter, and the result appears — as text, or as a chart in the **Plots** pane.
 
-:::: {.columns}
-::: {.column width="50%"}
-![The Console — ready at the `>` prompt](figs/rstudio_console.png){width="100%"}
-:::
-::: {.column width="50%"}
-![Plots — `plot(1:10)` renders here, ready to Zoom or Export](figs/rstudio_plot.png){width="100%"}
-:::
-::::
-
+![The Console — ready at the `>` prompt](figs/rstudio_console.png)
+![Plots — `plot(1:10)` renders here, ready to Zoom or Export](figs/rstudio_plot.png)
 > Code typed in the Console runs at once but isn't saved. Code written in the **Source editor** *is* saved and re-runnable — which is why real work lives in scripts, not the Console.
 
 ## RStudio in Action
 
 As you create objects they fill the **Environment**; when you need a function's arguments, the **Help** pane holds the official documentation.
 
-:::: {.columns}
-::: {.column width="50%"}
-![Environment — your objects, with type and size](figs/rstudio_env.png){width="100%"}
-:::
-::: {.column width="50%"}
-![Help — search any function, or type `?name`](figs/rstudio_help.png){width="100%"}
-:::
-::::
-
+![Environment — your objects, with type and size](figs/rstudio_env.png)
+![Help — search any function, or type `?name`](figs/rstudio_help.png)
 > Reach Help instantly from the Console: `?mean` opens the docs for any function. The **Files** tab (bottom-right) is your project's folder, right inside the IDE.
 
 ## Organising Your Work with Projects
@@ -159,8 +114,6 @@ As you create objects they fill the **Environment**; when you need a function's 
 - An **R Project** is a dedicated folder that keeps all the files, scripts, and data for a single analysis **in one place**.
 - It keeps your work organised and makes your code **reproducible and easier to share**.
 - Projects manage file paths **automatically** — so you never have to call `setwd()` or hard-code a path again.
-
-. . .
 
 > Create one with **File → New Project**. Inside a project, paths are *relative* to the project root — `read_csv("data/ideal3a.csv")` works on your machine, your colleague's, and the marker's, with no edits. This single habit prevents most "it works on my computer" problems.
 
@@ -170,8 +123,7 @@ As you create objects they fill the **Environment**; when you need a function's 
 - Assign a value to an object with the arrow `<-` (or `=`, though `<-` is the convention).
 - Type an object's name to print it back.
 
-```{webr-r}
-#| label: intro-objects
+```r
 # store values in objects
 x <- 42
 my_name <- "your_name"
@@ -191,8 +143,7 @@ my_name
 - The `#` sign starts a **comment** — R ignores everything after it on that line.
 - Core data types: **numeric**, **character**, **logical**, **factor**, and **dates**.
 
-```{webr-r}
-#| label: intro-casing
+```r
 # case-sensitivity in action
 Weight <- 30
 weight <- 25
@@ -205,8 +156,7 @@ Weight == weight   # FALSE — these are two different objects
 - Every value in R has a **type**. Knowing the type tells you what you can do with it.
 - Use `class()` to ask R what kind of thing an object is.
 
-```{webr-r}
-#| label: intro-types
+```r
 # inspect the types of three columns from the IDEAL dataset
 # numeric — a measurement
 class(ideal$Weight)    
@@ -225,8 +175,7 @@ A common point of confusion. The two words describe different things:
 - A **vector** is one specific *structure* an object can take: an ordered collection of elements that are **all the same type**.
 - There is no such thing as a lone "single value" in R — `x <- 42` is really a **vector of length 1**.
 
-```{webr-r}
-#| label: intro-obj-vs-vec
+```r
 x <- 42 # an object holding one value...
 nums <- c(10, 20, 30)   # ...and an object holding a vector
 
@@ -241,8 +190,7 @@ is.vector(x) # TRUE — even one value is a vector
 
 Vectors are the most basic data structure — a collection of elements of the **same type**. Build one with `c()` ("combine"), and reach into it with `[index]`.
 
-```{webr-r}
-#| label: intro-vectors
+```r
 # Different vector types
 nums <- c(10, 20, 30)
 chars <- c("apple", "banana", "cherry")
@@ -260,8 +208,7 @@ length(nums) # how many elements?
 
 Matrices are **two-dimensional** arrays where every element must be the **same type**. Build one with `matrix()`, giving it data plus dimensions (`nrow`, `ncol`); index it with `[row, column]`.
 
-```{webr-r}
-#| label: intro-matrices
+```r
 # Create a matrix from the numbers 1 to 12, arranged in 3 rows
 mat <- matrix(1:12, nrow = 3, ncol = 4)
 mat
@@ -286,8 +233,7 @@ Unlike a vector, a **list** can hold a **mix** of types and structures — numbe
 - **Flexible length** — elements can be different sizes
 - **Nested** — lists can contain lists
 
-```{webr-r}
-#| label: intro-lists
+```r
 # a list mixing a string, a number, and a vector
 person <- list(
   name = "Amina",
@@ -306,8 +252,7 @@ person[[2]] # access by position
 
 A **data frame** is like a spreadsheet — the most common structure for real analysis. Columns can be **different types**, but every column has the **same number of rows**.
 
-```{webr-r}
-#| label: intro-dataframes
+```r
 # columns of equal length; types may differ
 df <- data.frame(
   county = c("Turkana", "Nairobi", "Kisumu"),
@@ -326,8 +271,7 @@ df[, "cases"] # one column, by name and position
 
 Time to put it together. Create each structure yourself, then explore it with `str()`, `class()`, `length()`, and `dim()`. Edit the cell and press **Run**.
 
-```{webr-r}
-#| label: intro-practice
+```r
 # Practice area — experiment, then press Run
 
 # 1. Create your own vector
@@ -363,8 +307,6 @@ R ships with a core, and the community builds outward from there. Packages fall 
 
 - The ecosystem keeps evolving — with active growth in **deep learning**, modern **data analysis**, and **visualisation**.
 - R integrates cleanly with other tools you may already use: **Python, SQL, CSS, HTML and JavaScript**.
-
-. . .
 
 | Tool | What it's for |
 |------|---------------|
