@@ -7,7 +7,7 @@ learningOutcomes:
   - Sort rows using arrange and descending order.
 ---
 
-# ️ `select()` & `rename()`
+## ️ `select()` & `rename()`
 
 - A well-structured analysis uses only the columns it needs, named in a way that makes code self-explanatory.
 - `select()` shapes the column space;

@@ -6,8 +6,6 @@ learningOutcomes:
   - Generate summary statistics and identify missing values.
 ---
 
-#  Inspecting Your Data
-
 Never analyse data you have not looked at. These three functions are your first line of due diligence, run them immediately after every `read_*()` call.
 
 ## Preview
