@@ -5,7 +5,7 @@ dependsOn: []
 files: [
   introduction_to_statistics_and_probability.md
 ]
-learningOutcomes:
+learningOutcomes: |
   - Define statistics and explain its key components: data collection, analysis, interpretation, and presentation.
   - Differentiate between descriptive and inferential statistics and apply them in public health contexts.
   - Classify data as qualitative or quantitative and distinguish nominal, ordinal, discrete, and continuous variables.
