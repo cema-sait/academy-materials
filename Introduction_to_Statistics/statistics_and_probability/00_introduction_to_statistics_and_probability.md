@@ -1,6 +1,6 @@
 ---
 name: Introduction to Statistics and Probability
-dependsOn: [Introduction_to_Statistics.module_one]
+dependsOn: [Introduction_to_Statistics.statistics_and_probability]
 learningOutcomes:
   - Define statistics and explain its key components; data collection, analysis, interpretation, and presentation.
   - Differentiate between descriptive and inferential statistics and apply them in public health contexts.
