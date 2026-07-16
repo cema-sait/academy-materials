@@ -1,7 +1,7 @@
 ---
 name: Introduction to Statistical Modelling
 id: statistical_modelling
-dependsOn: [Introduction_to_Statistics.hypothesis_testing]
+dependsOn: [introduction_to_statistics.hypothesis_testing]
 files: []
 learningOutcomes:
   - Fit and interpret linear regression models, including assumptions and diagnostics.

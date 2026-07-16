@@ -1,7 +1,7 @@
 ---
 name: Hypothesis Testing
 id: hypothesis_testing
-dependsOn: [Introduction_to_Statistics.statistics_and_probability]
+dependsOn: [introduction_to_statistics.statistics_and_probability]
 files: []
 learningOutcomes:
   - Define hypothesis testing and explain its role in statistical inference.

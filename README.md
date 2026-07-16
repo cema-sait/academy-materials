@@ -35,7 +35,7 @@ name: CEMA Academy
 themes: [
   docker_containerization,
   introduction_to_R,
-  Introduction_to_Statistics,
+  introduction_to_statistics,
 ]
 ---
 ```
@@ -68,7 +68,7 @@ One paragraph. What the theme covers, what skills learners leave with.
 
 | Field     | Type            | Description |
 |-----------|-----------------|-------------|
-| `id`      | string          | Must exactly match the folder name and the entry in the root `themes` list. Case-sensitive — `Introduction_to_Statistics` and `introduction_to_statistics` are different ids. |
+| `id`      | string          | Must exactly match the folder name and the entry in the root `themes` list. Must be lowercase `snake_case` — e.g. `introduction_to_statistics`. |
 | `name`    | string          | Display name. Wrap in quotes if it contains special characters. |
 | `courses` | list of strings | Folder names of every module inside this theme, in the order they should appear in the app. Each entry must match the `id` in that module's `index.md`. |
 | `summary` | pipe string     | Plain prose description of the theme. |
@@ -148,7 +148,7 @@ There is no body summary for lesson files — content starts directly after the 
 
 | What               | Convention | Example |
 |--------------------|-----------|---------|
-| Theme folder       | Match `id` exactly, `snake_case` or `PascalCase_with_underscores` | `introduction_to_R`, `Introduction_to_Statistics` |
+| Theme folder       | Match `id` exactly, lowercase `snake_case` | `introduction_to_r`, `introduction_to_statistics` |
 | Module folder      | Match `id` exactly, `snake_case` | `introduction_to_r`, `module_one` |
 | Lesson files       | Zero-padded two-digit prefix followed by a short descriptive slug | `00_getting_started_with_r.md`, `03_building_your_own_images.md` |
 | `figs/` folder     | One per module, lowercase | `introduction_to_r/figs/` |
@@ -290,7 +290,7 @@ learningOutcomes:
 |---|---|---|
 | `docker_containerization` | `docker_containerization` | `introduction_to_docker` |
 | `introduction_to_R` | `introduction_to_R` | `introduction_to_r` |
-| `Introduction_to_Statistics` | `Introduction_to_Statistics` | `module_one`, `module_two`, `module_three` |
+| `introduction_to_statistics` | `introduction_to_statistics` | `statistics_and_probability`, `hypothesis_testing`, `statistical_modelling` |
 
 ---
 

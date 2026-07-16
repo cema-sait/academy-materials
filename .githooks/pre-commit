@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# .githooks/pre-commit
+#
+# Runs the academy-materials structure linter before every commit.
+# Only executes when at least one .md file is staged, so commits that touch
+# only images, scripts, or workflows are not slowed down.
+#
+# Install once with:
+#   make install-hooks
+# or:
+#   git config core.hooksPath .githooks
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+LINTER="$REPO_ROOT/scripts/lint_structure.py"
+
+# Only run when markdown files are staged
+if ! git diff --cached --name-only | grep -q '\.md$'; then
+  exit 0
+fi
+
+echo ""
+echo "→ Staged .md files detected — running structure linter..."
+echo ""
+
+# Ensure PyYAML is available
+if ! python3 -c "import yaml" 2>/dev/null; then
+  echo "ERROR: PyYAML is not installed. Run: pip install pyyaml"
+  exit 1
+fi
+
+python3 "$LINTER" --root "$REPO_ROOT"
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "Commit blocked. Fix the errors above and try again."
+  echo "To bypass this check (not recommended): git commit --no-verify"
+  echo ""
+fi
+
+exit $EXIT_CODE

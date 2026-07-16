@@ -11,6 +11,24 @@ on:
       - "**/*.md"
 
 jobs:
+  lint-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Run structure linter
+        run: python3 scripts/lint_structure.py
+
   check-markdown-yaml:
     runs-on: ubuntu-latest
 
@@ -28,7 +46,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Lint Python Code Blocks in Markdown
         uses: OxfordRSE/lint-md-codeblocks@main

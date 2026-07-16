@@ -1,5 +1,5 @@
 ---
-id: Introduction_to_Statistics
+id: introduction_to_statistics
 name: "Introduction to Statistics"
 courses: [
   statistics_and_probability,
