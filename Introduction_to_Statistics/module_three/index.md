@@ -1,7 +1,7 @@
 ---
 name: Introduction to Statistical Modelling
 id: module_three
-dependsOn: [introduction_to_statistics.module_two]
+dependsOn: [Introduction_to_Statistics.module_two]
 files: []
 learningOutcomes:
   - Fit and interpret linear regression models, including assumptions and diagnostics.
