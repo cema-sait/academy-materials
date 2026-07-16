@@ -1,6 +1,6 @@
 ---
 name: Introduction to Statistics and Probability
-id: introduction_to_stats_and_probability
+id: module_one
 dependsOn: []
 files: [
   introduction_to_statistics_and_probability.md
