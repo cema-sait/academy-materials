@@ -372,9 +372,9 @@ Q1. What is the probability of a Sepal.Length ≤ 4.5
 Q2. What is the probability of a Virginica Flower with Petal.Width > 2
 
 
-(iv) $A^{'}$ (read $A$ complement) consists of all outcomes not in A (that is, $S-A$)
+(iv) $A^{\prime}$ (read $A$ complement) consists of all outcomes not in A (that is, $S-A$)
 
-$P(A′)=1−P(A)$
+$P(A^{\prime})=1-P(A)$
 
 ```r
 # Probability of picking Setosa
@@ -387,9 +387,9 @@ prob_not_setosa
 ```
 
 
-(v) $0/$ (read as empty set) for the event which doesn’t contain any outcomes
+(v) $\emptyset$ (read as empty set) for the event which doesn't contain any outcomes
 
-$P(∅)=0$
+$P(\emptyset)=0$
 
 ```r
 # Probability of a species that doesn't exist in the dataset
