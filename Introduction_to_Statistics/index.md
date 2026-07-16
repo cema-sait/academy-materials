@@ -1,5 +1,5 @@
 ---
-id: introduction_to_statistics
+id: Introduction_to_Statistics
 name: "Introduction to Statistics"
 courses: [
   module_one,
