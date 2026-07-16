@@ -1,6 +1,8 @@
 ---
 name: Introduction to Statistics and Probability
-dependsOn: []
+dependsOn: [introduction_to_statistics.module_one]
+learningOutcomes:
+  - One
 ---
 
 ## Definition of Statistics
@@ -25,7 +27,7 @@ This definition points out 4 *components* of statistics:
 **1. Data collection:**
 Data can be collected from various sources such as surveys, databases, and experiments. In R, we can create a dataset manually or load data from a file (.xlsx or .csv)
 
-```{r}
+```r
 # Creating a dataset manually
 health_data <- data.frame(
   ID = 1:10,  
@@ -41,7 +43,7 @@ print(health_data)
 **2. Data analysis:**
 Analyzing data involves the systematic summarization and examination of underlying patterns. Let us conduct an analysis of the data we generated manually above.
 
-```{r}
+```r
 summary(health_data)  # Get min, max, mean, and median values
 mean(health_data$Age)  # Mean age of participants
 table(health_data$Disease)  # Count of people with and without the disease
@@ -51,13 +53,13 @@ This is called *descriptive statistics*
 
 We could also check if *weight loss* differs between *Treatment A and B* by conducting a hypotheis testing
 
-```{r}
+```r
 t.test(Weight_Loss ~ Treatment, data=health_data)
 ```
 
 We can model weight loss as a function of age and treatment using linear regression:
 
-```{r}
+```r
 model1 <- lm(Weight_Loss ~ Age + Treatment, data=health_data)
 summary(model1)
 
@@ -83,7 +85,7 @@ Visualizing data facilitates the effective communication of research findings. H
 
 a.) Histogram for Age Distribution
 
-```{r}
+```r
 set.seed(123)  # Ensures reproducibility
 
 ages <- rnorm(100, mean=40, sd=10) #create a datset following normal distribution 
@@ -93,7 +95,7 @@ hist(ages, main="Age Distribution", xlab="Age", col="lightblue", breaks = 10)
 
 b.) Boxplot of Weight Loss by Treatment Group
 
-```{r}
+```r
 boxplot(Weight_Loss ~ Treatment, data=health_data, 
         main="Weight Loss by Treatment",
         xlab="Treatment", ylab="Weight Loss (kg)",
@@ -136,7 +138,7 @@ marital status, race,  district of birth etc.
 2. Ordinal variables: Variables whose categories have a natural ordering. Eg education level,
 performance category, degree classifications etc.
 
-```{r}
+```r
 # Create a vector for Gender
 gender <- c("Male", "Female", "Male", "Male", "Male", "Female")
 
@@ -152,7 +154,7 @@ They are numerical variables and are divided into two;
 
 1. *Discrete variables*: can only assume certain values and there are gaps between them (whole numbers) eg. number of individuals positive of schistosomiasis.
 
-```{r}
+```r
 # Number of individuals positive for Schistosomiasis in different villages
 schisto_cases <- c(12, 18, 25, 10, 30, 22, 15, 28, 19, 14)
 
@@ -163,7 +165,7 @@ print(schisto_cases)
 
 2. *Continuous variables*: can assume any value in a specified range. eg. the weight or height of children in Nyatike sub-county
 
-```{r}
+```r
 set.seed(123)  # Ensures reproducibility
 
 # Generating continuous data for 10 children
@@ -204,7 +206,7 @@ d) Continuous data
 
 7. Consider the following dataset:
 
-```{r}
+```r
 data1 <- data.frame(
   Age = c(25, 34, 45, 50, 29, 60, 38, 40, 55, 48),
   Disease = c(1, 0, 1, 1, 0, 1, 0, 0, 1, 1),
@@ -240,7 +242,7 @@ What does this tell us about the difference in weight loss between the two treat
 
 15. In the following boxplot R command:
 
-```{r}
+```r
 boxplot(Weight_Loss ~ Treatment, data=data1,
         main="Weight Loss by Treatment",
         xlab="Treatment", ylab="Weight Loss (kg)",
@@ -259,7 +261,7 @@ A public health officer wants to determine if exercise has a significant effect 
 
 1. A sample space (S) is a set of all possible outcomes of an experiment.  If all outcomes are equally likely that is have the same probability, then each has probability $1/|S|$.
 
-```{r}
+```r
 # considering data iris, conduct an experiment where we
 #randomly select a species from the dataset, the sample space is; 
 data(iris)
@@ -275,7 +277,7 @@ Question 1: If the experiment was to randomly select a flower and consider all i
 
 2. An event is a subset of S. An event is simple if it consists of just a single outcome otherwise it is compound.
 
-```{r}
+```r
 # Count flowers where Sepal.Length > 5
 count_large_sepal <- sum(iris$Sepal.Length > 5)
 
@@ -298,7 +300,7 @@ $P(A∪B) = P(A)+P(B)−P(A∩B)$
 
 -- We can obtain $P(Setosa ∪ Sepal.Length>5)$
 
-```{r }
+```r
 # Probability of Setosa OR Large Sepal
 #event A is setosa and event B is Sepal.Length > 5
 # Calculate probabilities
@@ -320,7 +322,7 @@ print(prob_union)
 $P(A∩B) = P(A)⋅P(B∣A)$
 
 - We can obtain $P(Setosa ∩ Sepal.Length>5)$
-```{r}
+```r
 # Probability of Setosa AND Large Sepal
 # Count flowers that are Setosa AND have Sepal.Length > 5
 count_intersection <- sum(iris$Species == "setosa" & iris$Sepal.Length > 5)
@@ -332,7 +334,7 @@ prob_intersection
 
 or simply:
 
-```{r}
+```r
 # Intersection: Setosa AND Sepal.Length > 5
 prob_A_intersect_B <- sum(iris$Species == "setosa" & iris$Sepal.Length > 5) / nrow(iris)
 prob_A_intersect_B
@@ -345,7 +347,7 @@ $A−B = {x∈A∣x∈/B}$
 
 $P(A−B) = P(A)−P(A∩B)$
 
-```{r}
+```r
 # P(A) = Probability of picking Setosa
 prob_A <- mean(iris$Species == "setosa")
 
@@ -370,7 +372,7 @@ Q2. What is the probability of a Virginica Flower with Petal.Width > 2
 
 $P(A′)=1−P(A)$
 
-```{r}
+```r
 # Probability of picking Setosa
 prob_setosa <- mean(iris$Species == "setosa")
 
@@ -385,7 +387,7 @@ prob_not_setosa
 
 $P(∅)=0$
 
-```{r}
+```r
 # Probability of a species that doesn't exist in the dataset
 prob_empty_event <- mean(iris$Species == "non_existent_species")
 
@@ -437,7 +439,7 @@ A number is selected at random from the integers 2 to 25. Find the probability t
 (b) a prime number;
 (c) a prime number or perfect square
 
-```{r}
+```r
 #example of a mutually exclusive event
 # No flower can be both setosa and virginica at the same time
 both_species <- sum(iris$Species == "setosa" & iris$Species == "virginica")
@@ -454,7 +456,7 @@ Conditional probability can refer to the occurrence of event A subject to anothe
 
 The conditional probability of A given B is defined by $P(A | B)$ = $P(A ∩ B)/P(B)$ , provided that $P(B)$ is not equal to 0.
 
-```{r}
+```r
 # probability of Sepal.Length > 5 given that the Flower is Setosa
 #event B is Sepal.Length > 5 while event A is the Flower is Setosa
 #meaning we first observe event A then observe event B given we have 

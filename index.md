@@ -4,6 +4,6 @@ name: CEMA Academy
 themes: [
   docker_containerization,
   introduction_to_R,
-  Introduction_to_Statistics
+  introduction_to_statistics,
 ]
 ---
