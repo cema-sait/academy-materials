@@ -5,5 +5,6 @@ themes: [
   docker_containerization,
   introduction_to_R,
   Introduction_to_Statistics,
+  scientific_computing,
 ]
 ---
