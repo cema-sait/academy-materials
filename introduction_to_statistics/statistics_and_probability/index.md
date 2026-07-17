@@ -14,7 +14,5 @@ learningOutcomes:
   - Identify and describe common types of statistical distributions.
   - Use R to create, summarize, analyze, and visualize data using basic statistical methods.
 summary: |
-  This module introduces core concepts in statistics and probability, including data types, descriptive and inferential statistics, fundamental probability principles, and measures of central tendency, dispersion, and distribution. Learners use R to analyze, visualize, and interpret data through practical health and research examples.
+  This module introduces core concepts in statistics and probability, including data types, descriptive and inferential statistics, fundamental probability principles, and measures of central tendency, dispersion, and distribution.
 ---
-
-This module introduces core concepts in statistics and probability, including data types, descriptive and inferential statistics, fundamental probability principles, and measures of central tendency, dispersion, and distribution. Learners use R to analyze, visualize, and interpret data through practical health and research examples.

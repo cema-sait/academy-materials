@@ -10,5 +10,3 @@ learningOutcomes:
 summary: |
   This module introduces statistical modelling, starting with linear models and extending to generalised linear models for a range of response types. Learners develop practical skills in model fitting, interpretation, and validation using R.
 ---
-
-This module introduces statistical modelling, starting with linear models and extending to generalised linear models for a range of response types. Learners develop practical skills in model fitting, interpretation, and validation using R.
