@@ -62,8 +62,6 @@ courses: [
 summary: |
   One paragraph. What the theme covers, what skills learners leave with.
 ---
-
-One paragraph. What the theme covers, what skills learners leave with.
 ```
 
 | Field     | Type            | Description |
@@ -98,8 +96,6 @@ learningOutcomes:
 summary: |
   One paragraph. What this module covers and what learners practise.
 ---
-
-One paragraph. What this module covers and what learners practise.
 ```
 
 | Field              | Type            | Description |
@@ -231,8 +227,6 @@ courses: [
 summary: |
   <One paragraph describing what the theme covers and what learners leave with.>
 ---
-
-<Same paragraph as summary above.>
 ```
 
 ### Module `index.md`
@@ -252,8 +246,6 @@ learningOutcomes:
 summary: |
   <One paragraph describing what this module covers and what learners practise.>
 ---
-
-<Same paragraph as summary above.>
 ```
 
 ### Lesson file
