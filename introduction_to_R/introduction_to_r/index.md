@@ -26,5 +26,3 @@ learningOutcomes:
 summary: |
   This hands-on course teaches practical R for analysis from first principles to applied data wrangling. You will learn how to read and inspect data, apply tidyverse transformations, create summary tables, join datasets, and produce clear visualisations and maps. The course uses real-world examples to build confidence in writing reproducible R workflows.
 ---
-
-This hands-on course teaches practical R for analysis from first principles to applied data wrangling. You will learn how to read and inspect data, apply tidyverse transformations, create summary tables, join datasets, and produce clear visualisations and maps. The course uses real-world examples to build confidence in writing reproducible R workflows.
