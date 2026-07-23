@@ -4,6 +4,7 @@ id: statistics_and_probability
 dependsOn: []
 files: [
   00_introduction_to_statistics_and_probability.md,
+  01_introduction_to_probability.md,
 ]
 learningOutcomes:
   - "Define statistics and explain its key components: data collection, analysis, interpretation, and presentation."
