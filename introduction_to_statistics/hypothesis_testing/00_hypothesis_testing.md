@@ -638,173 +638,156 @@ t.test(new_drug,
 
 ## $\chi^2$ Test
 
--   Is the commonly used for comparison of proportions. $$
-    \chi^2 = \sum \frac{(observed-expected)^2}{expected}
-    $$
+The chi-square test is commonly used to compare observed and expected frequencies in categorical data.
 
-where *Observed (O)*: Actual counts in the data *Expected (E)*: Counts expected under $H_0$
-
-The expected frequency for each cell is: $$
-E = \frac{(Row total) (Column total)}{Grand total}
+$$
+\chi^2 = \sum \frac{(O-E)^2}{E}
 $$
 
-#### Example 1: Chi-square
+where:
+
+- $O$ = observed frequency in each cell
+- $E$ = expected frequency under $H_0$
+
+The expected frequency for each cell is:
+
+$$
+E = \frac{(\text{Row total})(\text{Column total})}{\text{Grand total}}
+$$
+
+#### Example 1: Chi-square test
 
 A study investigates whether smoking is associated with lung disease.
 
 **Step 1: Data**
 
-|             | Lung Disease | No Disease |   Total |
-|:------------|-------------:|-----------:|--------:|
-| Smokers     |           40 |         20 |      60 |
-| Non-smokers |           20 |         40 |      60 |
+|             | Lung Disease | No Disease | Total |
+|:------------|-------------:|-----------:|------:|
+| Smokers     |           40 |         20 |    60 |
+| Non-smokers |           20 |         40 |    60 |
 | **Total**   |       **60** |     **60** | **120** |
 
-**Step 2: State the Hypotheses**
+**Step 2: State the hypotheses**
 
-**Null hypothesis (**$H_0$)
+Null hypothesis ($H_0$):
 
 $$
 H_0:\ \text{Smoking and lung disease are independent.}
 $$
 
-**Alternative hypothesis (**$H_A$)
+Alternative hypothesis ($H_A$):
 
 $$
 H_A:\ \text{Smoking and lung disease are associated.}
 $$
 
-**Step 3: Compute the Expected Frequencies (If there were truly no association between smoking and lung disease (i.e., if** $H_0$ were true), how many people would we expect to see in each cell?)
+**Step 3: Compute the expected frequencies**
 
-The expected frequency for each cell is calculated as
-
-$$
-E=\frac{(\text{Row Total})(\text{Column Total})}{\text{Grand Total}}
-$$
-
-For **Smokers with Lung Disease**,
+If there were no association between smoking and lung disease, the expected count in each cell would be:
 
 $$
-E=\frac{60\times60}{120}=30
+E = \frac{(\text{Row Total})(\text{Column Total})}{\text{Grand Total}}
 $$
 
-the expected frequencies for all cells are:
+For smokers with lung disease:
 
-|             | Lung Disease | No Disease |   Total |
-|:------------|-------------:|-----------:|--------:|
-| Smokers     |           30 |         30 |      60 |
-| Non-smokers |           30 |         30 |      60 |
+$$
+E = \frac{60 \times 60}{120} = 30
+$$
+
+The expected frequencies for all cells are:
+
+|             | Lung Disease | No Disease | Total |
+|:------------|-------------:|-----------:|------:|
+| Smokers     |           30 |         30 |    60 |
+| Non-smokers |           30 |         30 |    60 |
 | **Total**   |       **60** |     **60** | **120** |
 
-**Step 4: Compute the Chi-square Statistic**
+**Step 4: Compute the chi-square statistic**
 
-The Pearson Chi-square statistic is
-
-$$
-\chi^2=\sum\frac{(O-E)^2}{E}
-$$
-
-**Cell 1 (Smokers, Lung Disease)**
+The Pearson chi-square statistic is:
 
 $$
-\frac{(40-30)^2}{30}
-=
-\frac{100}{30}
-=
-3.33
+\chi^2 = \sum \frac{(O-E)^2}{E}
 $$
 
-**Cell 2 (Smokers, No Disease)**
+For each cell:
+
+**Cell 1: Smokers, Lung Disease**
 
 $$
-\frac{(20-30)^2}{30}
-=
-\frac{100}{30}
-=
-3.33
+\frac{(40-30)^2}{30} = \frac{100}{30} = 3.33
 $$
 
-**Cell 3 (Non-smokers, Lung Disease)**
+**Cell 2: Smokers, No Disease**
 
 $$
-\frac{(20-30)^2}{30}
-=
-\frac{100}{30}
-=
-3.33
+\frac{(20-30)^2}{30} = \frac{100}{30} = 3.33
 $$
 
-**Cell 4 (Non-smokers, No Disease)**
+**Cell 3: Non-smokers, Lung Disease**
 
 $$
-\frac{(40-30)^2}{30}
-=
-\frac{100}{30}
-=
-3.33
+\frac{(20-30)^2}{30} = \frac{100}{30} = 3.33
 $$
 
-**Step 5: Sum the Contributions**
+**Cell 4: Non-smokers, No Disease**
 
 $$
-\chi^2
-=
-3.33+3.33+3.33+3.33
-=
-13.33
+\frac{(40-30)^2}{30} = \frac{100}{30} = 3.33
 $$
 
-**Step 6: Compute the Degrees of Freedom**
-
-The degrees of freedom are calculated as
+**Step 5: Sum the contributions**
 
 $$
-df=(r-1)(c-1)
+\chi^2 = 3.33 + 3.33 + 3.33 + 3.33 = 13.33
 $$
 
-where
+**Step 6: Compute the degrees of freedom**
 
--   $r=2$ (number of rows)
--   $c=2$ (number of columns)
-
-Therefore,
+The degrees of freedom are:
 
 $$
-df=(2-1)(2-1)=1
+df = (r-1)(c-1)
 $$
 
-**Step 7: Make a Decision**
+where:
 
-For a significance level of
+- $r = 2$ (number of rows)
+- $c = 2$ (number of columns)
 
-$$
-\alpha=0.05,
-$$
-
-the critical value is
+So,
 
 $$
-\chi^2_{0.05,1}=3.841.
+df = (2-1)(2-1) = 1
+$$
+
+**Step 7: Make a decision**
+
+At a significance level of $\alpha = 0.05$, the critical value is:
+
+$$
+\chi^2_{0.05,1} = 3.841
 $$
 
 Since
 
 $$
-13.33>3.841,
+13.33 > 3.841,
 $$
 
-we **reject the null hypothesis**.
+we reject the null hypothesis.
 
 **Conclusion**
 
-There is sufficient statistical evidence to conclude that **smoking is significantly associated with lung disease**.
+There is sufficient statistical evidence to conclude that smoking is significantly associated with lung disease.
 
 **Create the contingency table**
 
 ```{r}
 # Create the contingency table
-smoking <- matrix(c(40,20,
-                    20,40),
+smoking <- matrix(c(40, 20,
+                    20, 40),
                   nrow = 2,
                   byrow = TRUE)
 
@@ -815,45 +798,39 @@ colnames(smoking) <- c("Disease",
                        "No Disease")
 
 smoking
-#display the expected frequencies
-
-
+# display the expected frequencies
 ```
 
 **Perform the test**
 
 ```{r}
 chisq.test(smoking)
-chisq.test(smoking, correct = F)
+chisq.test(smoking, correct = FALSE)
 
 result <- chisq.test(smoking)
 
 result$expected
 
-#extract individual components
+# extract individual components
 result$statistic
 result$parameter
 result$p.value
 ```
 
-**Interpretation of the Output**
+**Interpretation of the output**
 
--   Chi-square statistic ($\chi^2$) = 13.33: This measures how much the observed frequencies differ from the expected frequencies under the null hypothesis.
+- Chi-square statistic ($\chi^2$) = 13.33: this measures how much the observed frequencies differ from the expected frequencies under the null hypothesis.
+- Degrees of freedom (df) = 1: determined by the table dimensions, $(r-1)(c-1)$.
+- p-value = 0.00026: since this is less than 0.05, there is strong evidence against the null hypothesis.
+- Conclusion: there is a statistically significant association between smoking and lung disease.
 
--   Degrees of freedom (df) = 1: Determined by the table dimensions, $(r−1)(c−1)$.
+### Choosing the appropriate hypothesis test
 
--   p-value = 0.00026: Since this is less than 0.05, there is strong evidence against the null hypothesis.
-
--   *Conclusion*: There is a statistically significant association between smoking and lung disease
-
-### Choosing the Appropriate Hypothesis Test
-
-| **Situation**                                                                                                                                | **Appropriate Test**                      |
-|:-----------------------------------------------|:----------------------|
-| Compare one sample mean to a known value, with **population standard deviation (**$\sigma$) known or **large sample size (**$n \geq 30$)     | One-sample **Z-test**                     |
-| Compare one sample mean to a known value, with **population standard deviation (**$\sigma$) unknown                                          | One-sample **t-test**                     |
-| Compare the means of **two independent groups**, with **population standard deviations known**                                               | Two-sample **Z-test**                     |
-| Compare the means of **two independent groups**, with **population standard deviations unknown**                                             | Two-sample **t-test** (pooled or Welch's) |
-| Compare **paired or matched observations** (e.g., before-and-after measurements, twins, matched subjects)                                    | Paired **t-test**                         |
-| Compare the association between **two categorical variables** (e.g., exposure vs. disease, treatment vs. outcome, gender vs. smoking status) | **Pearson's Chi-square test**             |
-|                                                                                                                                              |                                           |
+| Situation | Appropriate test |
+|:-----------|:-----------------|
+| Compare one sample mean to a known value, with population standard deviation $\sigma$ known or sample size $n \geq 30$ | One-sample **Z-test** |
+| Compare one sample mean to a known value, with population standard deviation $\sigma$ unknown | One-sample **t-test** |
+| Compare the means of two independent groups, with population standard deviations known | Two-sample **Z-test** |
+| Compare the means of two independent groups, with population standard deviations unknown | Two-sample **t-test** (pooled or Welch's) |
+| Compare paired or matched observations (e.g., before-and-after measurements, twins, matched subjects) | Paired **t-test** |
+| Compare the association between two categorical variables (e.g., exposure vs. disease, treatment vs. outcome, gender vs. smoking status) | **Pearson's chi-square test** |
